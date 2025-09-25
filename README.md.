@@ -1,65 +1,138 @@
-Retail Sales Dashboard (Tableau)
+📊 Retail Sales Dashboard
+🔹 Project Overview
 
-*Author:* Monisha B.N.  
-*Dataset:* sample_retail_sales_dataset.csv (200 rows, synthetic retail sales data)  
-*Tool:* Tableau Desktop / Tableau Public  
+This project is a Retail Sales Dashboard built in Tableau.
+It provides insights into sales, profit, and performance across categories, sub-categories, and regions using an interactive dashboard.
 
- 🎯 Project Objective
-Design and build an *interactive Tableau dashboard* to analyze retail sales and profitability across Regions, Categories, Sub-Categories, and Products.  
-The dashboard provides KPIs, monthly sales trends, product-level insights, and interactive features (filters, parameters, actions).
+The dataset is a synthetic Retail Sales Dataset (200 records).
 
-📂 Repository Structure
-retail-dashboard/ data/ sample_retail_sales_dataset.csv workbook/ retail_dashboard.twbx ppt/ summary.pptx screenshots/ dashboard_overview.png kpi_cards.png trend.png top_products.png README.md
+🔹 Repository Structure
+Retail-dashboard/
+│
+├── sample_retail_sales_dataset.csv       # Dataset
+├── Retail Sales data.twbx                # Tableau packaged workbook
+├── summary.pptx                          # Presentation (rename: remove space)
+├── screenshots/                          # Dashboard screenshots
+│   └── dashboard1.png
+│   └── dashboard2.png
+│   └── ...
+└── README.md                             # Documentation
 
- 📊 Key KPIs
-- *Total Sales* = SUM([Sales])
-- *Total Profit* = SUM([Profit])
-- *Profit Margin*
-  tableau
-  IF SUM([Sales]) = 0 THEN 0
-  ELSE SUM([Profit]) / SUM([Sales])
-  END
+🔹 Dataset Description
 
-*Average Order Value (AOV)
+File: sample_retail_sales_dataset.csv
+
+Fields:
+
+Order ID – unique order identifier
+
+Order Date – date of the order
+
+Customer ID – customer identifier
+
+Region – North, South, East, West
+
+Category – Electronics, Clothing, Groceries, Furniture
+
+Sub-Category – product classification
+
+Product Name – product description
+
+Sales – revenue generated
+
+Profit – profit earned
+
+Quantity – units sold
+
+Discount – discount applied
+
+🔹 KPIs
+
+The dashboard highlights:
+
+Total Sales → SUM([Sales])
+
+Total Profit → SUM([Profit])
+
+Profit Margin % →
+
+IF SUM([Sales]) = 0 THEN 0
+ELSE SUM([Profit]) / SUM([Sales])
+END
+
+
+Average Order Value (AOV) →
+
 SUM([Sales]) / COUNTD([Order ID])
-Year-over-Year Sales %
+
+
+Month-over-Month Growth % (since only one year is available) →
+
 (SUM([Sales]) - LOOKUP(SUM([Sales]), -1)) / ABS(LOOKUP(SUM([Sales]), -1))
 
-*Running Sales Total
-RUNNING_SUM(SUM([Sales]))
+🔹 Visualizations
 
-*3-Month Moving Average
-WINDOW_AVG(SUM([Sales]), -2, 0)
+The dashboard includes:
 
-*Dynamic Measure Selector
-IF [Select Measure] = 'Sales' THEN SUM([Sales])
-ELSEIF [Select Measure] = 'Profit' THEN SUM([Profit])
-ELSE SUM([Quantity])
-ENd
+📈 Sales Trend (Monthly Line Chart)
 
-📈 Visualizations in Dashboard
-KPI Cards → Sales, Profit, Profit Margin, AOV, YoY%
-Monthly Sales Trend (with 3-month moving average)
-Sales by Category (bar)
-Profit by Sub-Category (bar, margin-colored)
-Sales by Region (bar)
-Top N Products (parameter-driven)
-Sales vs Profit Scatter Plot (bubble size = Quantity)
-Monthly Sales Heatmap
-Order Detail Table (drill-down)
+📊 Sales by Category (Bar Chart)
 
-🖥 Dashboard Interactivity
-Filters: Region, Category, Sub-Category, Date Range
-Parameters: Select Measure (Sales/Profit/Quantity), Top N Products
-Actions: Click Category to filter other charts, hover to highlight
-Tooltips: Show Sales, Profit, Margin dynamically
+💹 Profit by Sub-Category (Bar Chart with Margin Coloring)
 
-🚀 How to Run
-1. Open Tableau → File → Open → select workbook/retail_dashboard.twbx.
-2. Use filters and parameters on the dashboard to explore insights.
-3. To publish online → Server → Tableau Public → Save to Tableau Public.
+🌍 Sales by Region (Bar Chart)
 
-📌 Notes
-Dataset is synthetic/demo for learning purposes.
-For real-world use, replace dataset with enterprise sales data.
-Optimize with Extracts & Context Filters for larger datasets.
+🏆 Top N Products (Dynamic Parameter)
+
+🔎 Sales vs Profit Scatter Plot
+
+🎨 Monthly Sales Heatmap
+
+📑 Detailed Order Table (Drill-down)
+
+🔹 Interactivity
+
+Filters: Region, Category, Sub-Category, Date
+
+Parameters:
+
+Select Measure → switch between Sales, Profit, Quantity
+
+Top N Products → view top 5/10/15 products
+
+Actions:
+
+Filter actions (click → filter other charts)
+
+Highlight actions (hover → emphasize related data)
+
+🔹 Key Insights
+
+Clothing & Electronics drive the highest sales.
+
+Some sub-categories show negative profit (due to high discounts).
+
+North & South regions lead in sales.
+
+Top 10 products contribute significantly to total revenue.
+
+MoM growth highlights small ups and downs across months.
+
+🔹 How to Use
+
+Clone this repo or download the dataset.
+
+Open Retail Sales data.twbx
+ in Tableau Desktop or Tableau Public.
+
+Explore the interactive dashboard with filters and parameters.
+
+🔹 Future Enhancements
+
+Extend dataset to multiple years → enable YoY analysis.
+
+Add customer segmentation (RFM analysis).
+
+Connect to live data for real-time updates.
+
+✍️ Author: Monisha B.N
